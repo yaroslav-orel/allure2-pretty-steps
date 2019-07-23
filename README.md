@@ -7,18 +7,23 @@
 Convert ```Allure2``` camel case ```@Step```s into human readable format
 
 # Motivitation
+```Allure2``` java bindings don't convert method name into human readable format
 ```
 @Step
 public void stepName(){}
 ```
-```Allure2``` java bindings don't convert method name into human readable format and above step will show up in Allure report like this ```stepName``` . In order to fix this client needs to manually set ```@Step```'s value which would look like
+So above Step will show up in ```Allure2``` report like this 
+
+```stepName``` 
+
+In order to make it more readable, client needs to manually set ```@Step```'s value which would look like
 ```
 @Step("Step Name")
 public void stepName(){}
 ```
-While it is useful to be able to manually set ```@Step```'s value, one can find themself ofter repeating method name in step value which seems redundant.
+While it is useful to be able to manually set ```@Step```'s value, one can develop a habit ofter repeating method name in ```@Step```'s value which seems redundant.
 
-With ```allure2-pretty-steps``` there's no need to manually set ```@Step```'s value because method name is automatically converted to human readable format and supplied to Allure report.
+With ```allure2-pretty-steps``` there's no need to manually set ```@Step```'s value because method name is automatically converted to human readable format and supplied to ```Allure2``` report.
 
 # Usage
 
