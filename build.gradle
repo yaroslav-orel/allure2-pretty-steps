@@ -13,10 +13,13 @@ ext {
     projectUrl = "https://github.com/yaroslav-orel/allure2-pretty-steps"
 }
 
+apply from: "${gradleScriptDir}/bintray.gradle"
+apply from: "${gradleScriptDir}/maven-publish.gradle"
+
 sourceCompatibility = 1.8
 
 repositories {
-    mavenLocal()
+    jcenter()
     mavenCentral()
 }
 
