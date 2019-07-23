@@ -1,0 +1,36 @@
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_API_KEY')
+
+    configurations = ['archives']
+
+    publish = true
+    pkg {
+        repo = 'allure2-pretty-steps'
+        name = 'allure2-pretty-steps'
+        desc = 'Convert allure2 camel case steps into human readable format'
+        websiteUrl = 'https://github.com/yaroslav-orel/allure2-pretty-steps'
+        issueTrackerUrl = 'https://github.com/yaroslav-orel/allure2-pretty-steps/issues'
+        vcsUrl = 'https://github.com/yaroslav-orel/allure2-pretty-steps.git'
+        licenses = ['MIT']
+
+        githubRepo = 'yaroslav-orel/allure2-pretty-steps'
+        githubReleaseNotesFile = 'README.md'
+
+        version {
+            name = project.version
+            released = new Date()
+            gpg {
+                sign = true
+            }
+            mavenCentralSync {
+                sync = true
+                user = System.getenv('OSSRH_USER')
+                password = System.getenv('OSSRH_PASSWORD')
+                close = '1'
+            }
+        }
+    }
+}

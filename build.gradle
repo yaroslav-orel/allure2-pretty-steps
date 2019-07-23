@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.jfrog.bintray' version "1.8.4"
+}
+
+group 'com.github.yaroslav-orel'
+version '1.0'
+description 'Convert allure2 camel case steps into human readable format'
+
+ext {
+    gradleScriptDir = "${rootProject.projectDir}/gradle"
+    projectUrl = "https://github.com/yaroslav-orel/allure2-pretty-steps"
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.4'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: '1.7'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
+    testImplementation 'org.assertj:assertj-core:3.12.1'
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
