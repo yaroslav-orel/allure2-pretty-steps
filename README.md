@@ -14,7 +14,9 @@ public void stepName(){}
 ```
 So above Step will show up in ```Allure2``` report like this 
 
-```stepName``` 
+```
+stepName
+``` 
 
 In order to make it more readable, client needs to manually set ```@Step```'s value which would look like
 ```
